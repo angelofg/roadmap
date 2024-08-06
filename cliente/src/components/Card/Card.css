@@ -1,0 +1,37 @@
+.card {
+    width: 400px;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.card .encabezado{
+    background-color: #a08484;
+    border-radius: 10px 10px 0px 0px;
+    padding: 15px;
+}
+ 
+.card .info{
+    background: #e0e0e0;
+    box-shadow: 7px 7px 15px rgba(0, 0, 0, 25%);
+    border-radius: 0px 0px 10px 10px;
+    padding: 48px;
+    padding-bottom: 40px;
+    min-height: 100px;
+}
+
+.card .info h1{
+    color: #6278f7;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.card .info h4{
+    font-size: 18px;
+    line-height: 22px;
+    color: #212121;
+    padding: 0 24px;
+    font-weight: 400;
+    margin: 0;
+}
