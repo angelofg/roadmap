@@ -2,22 +2,18 @@ import "./Formulario.css";
 import Campo from "../Campo/Campo";
 import Boton from "../Boton/Boton";
 import { useState } from "react";
+import axios from 'axios';
 
-const Formulario = (props) => {
+const Formulario = () => {
     const [tecnologia, setTecnologia] = useState('');
     const [item, setItem] = useState('');
 
-    const { registrar } = props;
-
-    const handleEnvio = (e) => {
+    const handleEnvio = async (e) => {
         e.preventDefault();
         
-        let datosAEnviar = {
-            tecnologia,
-            item
-        }
-        
-        registrar(datosAEnviar);
+        await axios.post('http://127.0.0.1:5000/api/productos', {tecnologia:tecnologia, item: item})
+            .then(data=> console.log('datos enviados'))
+            .catch(err=> console.log(err))
     }
 
     return <section className="formulario">
@@ -35,7 +31,7 @@ const Formulario = (props) => {
                 placeholder='Digite el item' 
                 actualizarValor={setItem}
             />
-            <Boton>Agregar</Boton> 
+            <Boton >Agregar</Boton> 
         </form>
     </section>
 }

@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
+const cors = require('cors'); 
 
 const app = express();
 app.use(cors());
@@ -13,30 +13,31 @@ mongoose.connect('mongodb://127.0.0.1:27017/mapaweb',{
     .then(db => console.log('DB Conectada'))
     .catch(err => console.log(err))
     
-const ItemSchema = new mongoose.Schema({
-    name: String,
+const ProductoSchema = new mongoose.Schema({
+    tecnologia: String,
+    item: String
 });
-const Item = mongoose.model('Item', ItemSchema);    
+const Producto = mongoose.model('Producto', ProductoSchema);    
 
-app.get('/api/items', async (req, res) => {
-    const items = await Item.find();
-    res.send(items);
-});
-
-app.post('/api/items', async (req, res) => {
-    const newItem = new Item(req.body);
-    await newItem.save();
-    res.send(newItem);
+app.get('/api/productos', async (req, res) => {
+    const productos = await Producto.find();
+    res.send(productos);
 });
 
-app.put('/api/items/:id', async (req, res) => {
-    const updateItem = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true});
-    res.send(updateItem);
+app.post('/api/productos', async (req, res) => {
+    const newProducto = new Producto(req.body);
+    await newProducto.save();
+    res.send(newProducto);
 });
 
-app.delete('/api/items/:id', async (req, res) => {
+app.put('/api/productos/:id', async (req, res) => {
+    const updateProducto = await Producto.findByIdAndUpdate(req.params.id, req.body, { new: true});
+    res.send(updateProducto);
+});
+
+app.delete('/api/productos/:id', async (req, res) => {
     await Item.findByIdAndDelete(req.params.id);
-    res.send({ message: 'Item deleted'});
+    res.send({ message: 'Producto deleted'});
 });
 
 const PORT = process.env.PORT || 5000;
