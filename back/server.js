@@ -36,7 +36,7 @@ app.put('/api/productos/:id', async (req, res) => {
 });
 
 app.delete('/api/productos/:id', async (req, res) => {
-    await Item.findByIdAndDelete(req.params.id);
+    await Producto.findByIdAndDelete(req.params.id);
     res.send({ message: 'Producto deleted'});
 });
 

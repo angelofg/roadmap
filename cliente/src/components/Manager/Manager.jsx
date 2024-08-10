@@ -5,7 +5,6 @@ const Manager = () => {
 
     return (<div>
         <Formulario />
-
         <Mapa />
     </div>
     );
