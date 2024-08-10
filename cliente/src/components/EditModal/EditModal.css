@@ -1,5 +1,6 @@
 .botonEditar{
     color: #3d8f48;
+    cursor: pointer;
 }
 
 .botonEditar:hover{
