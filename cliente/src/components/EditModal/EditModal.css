@@ -6,3 +6,14 @@
 .botonEditar:hover{
     color: #188d28;
 }
+
+.inputActualizar{
+    width: 100%;
+    background-color: #FFFFFF;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+    border: none;
+    padding: 30px 20px;
+    outline-color: #6278f7;
+    font-size: 16px;
+    box-sizing: border-box;
+}

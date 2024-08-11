@@ -18,7 +18,7 @@ const Mapa = (props) => {
   return (
     <div className="mapa">
       {productos.map((producto, index) => (
-        <Card datos={producto} key={index} />
+        <Card fetch={fetchProductos} datos={producto} key={index} />
       ))}
     </div>
   );

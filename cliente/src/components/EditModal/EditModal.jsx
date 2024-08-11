@@ -8,9 +8,10 @@ import Campo from "../Campo/Campo";
 
 const EditModal = (props) => {
   const { tecnologia, item } = props.datos;
+  const fetchProductos = props.fetch;
 
   const [show, setShow] = useState(false);
-  const [actualizar, setActualizar] = useState("");
+  const [actualizar, setActualizar] = useState(item);
 
   let datosActualizar = props.datos;
 
@@ -22,6 +23,7 @@ const EditModal = (props) => {
       .put(`http://127.0.0.1:5000/api/productos/${id}`, {tecnologia:tecnologia, item:actualizar})
       .then((data) => console.log("Producto actualizado"))
       .catch((err) => console.log(err));
+      fetchProductos();
   };
 
   return (
@@ -35,6 +37,7 @@ const EditModal = (props) => {
 
         <Modal.Body>
           <input 
+            className="inputActualizar"
             type="text"
             value={actualizar}
             onChange={e => setActualizar(e.target.value)}

@@ -1,7 +1,7 @@
 import "./Formulario.css";
 import Campo from "../Campo/Campo";
 import Boton from "../Boton/Boton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Formulario = () => {

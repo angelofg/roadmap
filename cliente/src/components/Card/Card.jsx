@@ -4,13 +4,14 @@ import "./Card.css";
 
 const Card = (props) => {
     const {tecnologia, item} = props.datos;
+    const fetchProductos = props.fetch;
 
     return <div className="card">
         <div className="encabezado">
             <h1>{tecnologia}</h1>
             <div className="iconos">
-                <EditModal datos={props.datos}/>
-                <DeleteProduct datos={props.datos}/>
+                <EditModal fetch={fetchProductos} datos={props.datos}/>
+                <DeleteProduct fetch={fetchProductos} datos={props.datos}/>
             </div>
             
         </div>
