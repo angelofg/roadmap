@@ -4,7 +4,6 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FiEdit } from "react-icons/fi";
-import Campo from "../Campo/Campo";
 
 const EditModal = (props) => {
   const { tecnologia, item } = props.datos;
@@ -13,7 +12,7 @@ const EditModal = (props) => {
   const [show, setShow] = useState(false);
   const [actualizar, setActualizar] = useState(item);
 
-  let datosActualizar = props.datos;
+  const datosActualizar = props.datos;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,7 +22,7 @@ const EditModal = (props) => {
       .put(`http://127.0.0.1:5000/api/productos/${id}`, {tecnologia:tecnologia, item:actualizar})
       .then((data) => console.log("Producto actualizado"))
       .catch((err) => console.log(err));
-      fetchProductos();
+    await fetchProductos();
   };
 
   return (

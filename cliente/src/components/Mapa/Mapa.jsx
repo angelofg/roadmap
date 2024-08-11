@@ -1,24 +1,17 @@
 import "./Mapa.css";
 import Card from "../Card/Card";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { ProductoContext } from "../Manager/Manager";
+import { useContext } from "react";
 
 const Mapa = (props) => {
-  const [productos, setProductos] = useState([]);
 
-  useEffect(() => {
-    fetchProductos();
-  }, []);
-
-  const fetchProductos = async () => {
-    const response = await axios.get("http://127.0.0.1:5000/api/productos");
-    setProductos(response.data);
-  };
+  const productos = useContext(ProductoContext);
+  // const fetchProductos = useContext(ProductoContext);
 
   return (
     <div className="mapa">
       {productos.map((producto, index) => (
-        <Card fetch={fetchProductos} datos={producto} key={index} />
+        <Card fetch={props.fetch} datos={producto} key={index} />
       ))}
     </div>
   );

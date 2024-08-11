@@ -1,26 +1,19 @@
 import "./Formulario.css";
 import Campo from "../Campo/Campo";
 import Boton from "../Boton/Boton";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useContext } from "react";
+import { ProductoContext } from "../Manager/Manager";
 
-const Formulario = () => {
-  const [tecnologia, setTecnologia] = useState("");
-  const [item, setItem] = useState("");
+const Formulario = (props) => {
+  const {tecnologia, item} = useContext(ProductoContext);
+
+  const addProductos = props.add;
+  const fetchProductos = props.fetch;
 
   const handleEnvio = async (e) => {
     e.preventDefault();
-    addProductos();
-  };
-
-  const addProductos = async () => {
-    await axios
-      .post("http://127.0.0.1:5000/api/productos", {
-        tecnologia: tecnologia,
-        item: item,
-      })
-      .then((data) => console.log("datos enviados"))
-      .catch((err) => console.log(err));
+    await addProductos();
+    await fetchProductos();
   };
 
   return (
@@ -31,13 +24,13 @@ const Formulario = () => {
           titulo="Tecnologia"
           valor={tecnologia}
           placeholder="Titulo de la tegnologia"
-          actualizarValor={setTecnologia}
+          actualizarValor={props.actualizarTec}
         />
         <Campo
           titulo="Item"
           valor={item}
           placeholder="Digite el item"
-          actualizarValor={setItem}
+          actualizarValor={props.actualizarItem}
         />
         <Boton>Agregar</Boton>
       </form>
