@@ -25,9 +25,17 @@ const Manager = () => {
             tecnologia: tecnologia,
             item: item,
           })
-          .then((data) => console.log("datos enviados"))
+          .then((data) => console.log("Datos enviados"))
           .catch((err) => console.log(err));
       };
+
+    const deleteProductos = async (id) => {
+    await axios
+        .delete(`http://127.0.0.1:5000/api/productos/${id}`)
+        .then((data) => console.log("Producto eliminado"))
+        .catch((err) => console.log(err));
+    await fetchProductos();
+    };
     
     return (
     <ProductoContext.Provider value={productos}>
@@ -40,6 +48,7 @@ const Manager = () => {
             />
             <Mapa 
                 fetch={fetchProductos}
+                delete={deleteProductos}
             />
         </div>
     </ProductoContext.Provider>

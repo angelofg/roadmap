@@ -6,12 +6,16 @@ import { useContext } from "react";
 const Mapa = (props) => {
 
   const productos = useContext(ProductoContext);
-  // const fetchProductos = useContext(ProductoContext);
 
   return (
     <div className="mapa">
       {productos.map((producto, index) => (
-        <Card fetch={props.fetch} datos={producto} key={index} />
+        <Card 
+          key={index}
+          datos={producto} 
+          fetch={props.fetch} 
+          delete={props.delete}
+         />
       ))}
     </div>
   );

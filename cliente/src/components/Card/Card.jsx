@@ -6,22 +6,19 @@ import "./Card.css";
 
 const Card = (props) => {
     const {tecnologia, item} = props.datos;
-    // const fetchProductos = props.fetch;
-
-    // const productos = useContext(ProductoContext);
-    // const fetchProductos = useContext(ProductoContext);
-
+   
     return <div className="card">
         <div className="encabezado">
             <h1>{tecnologia}</h1>
             <div className="iconos">
                 <EditModal 
-                    fetch={props.fetch} 
                     datos={props.datos}
+                    fetch={props.fetch}
                 />
                 <DeleteProduct 
-                    fetch={props.fetch} 
                     datos={props.datos}
+                    fetch={props.fetch} 
+                    delete={props.delete}
                 />
             </div>
             
