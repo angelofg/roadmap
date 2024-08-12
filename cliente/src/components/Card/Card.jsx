@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { ProductoContext } from "../Manager/Manager";
 import DeleteProduct from "../DeleteProduct/DeleteProduct";
 import EditModal from "../EditModal/EditModal";
 import "./Card.css";
@@ -14,6 +12,7 @@ const Card = (props) => {
                 <EditModal 
                     datos={props.datos}
                     fetch={props.fetch}
+                    update={props.update}
                 />
                 <DeleteProduct 
                     datos={props.datos}

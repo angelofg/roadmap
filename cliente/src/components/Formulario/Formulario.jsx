@@ -23,7 +23,7 @@ const Formulario = (props) => {
         <Campo
           titulo="Tecnologia"
           valor={tecnologia}
-          placeholder="Titulo de la tegnologia"
+          placeholder="Titulo de la tecnologia"
           actualizarValor={props.actualizarTec}
         />
         <Campo

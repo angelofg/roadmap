@@ -9,6 +9,7 @@ const Manager = () => {
     const [productos, setProductos] = useState([]);
     const [tecnologia, setTecnologia] = useState("");
     const [item, setItem] = useState("");
+    //const [actualizar, setActualizar] = useState(item);
 
     useEffect(() => {
         fetchProductos();
@@ -37,6 +38,14 @@ const Manager = () => {
     await fetchProductos();
     };
     
+    const updateProductos = async (id,data) => {
+        await axios
+          .put(`http://127.0.0.1:5000/api/productos/${id}`, data)
+          .then((data) => console.log("Producto actualizado"))
+          .catch((err) => console.log(err));
+        await fetchProductos();
+    };
+
     return (
     <ProductoContext.Provider value={productos}>
         <div>
@@ -49,6 +58,7 @@ const Manager = () => {
             <Mapa 
                 fetch={fetchProductos}
                 delete={deleteProductos}
+                update={updateProductos}
             />
         </div>
     </ProductoContext.Provider>

@@ -1,29 +1,32 @@
-import axios from "axios";
 import "./EditModal.css";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FiEdit } from "react-icons/fi";
 
+
 const EditModal = (props) => {
+  
   const { tecnologia, item } = props.datos;
-  const fetchProductos = props.fetch;
 
   const [show, setShow] = useState(false);
   const [actualizar, setActualizar] = useState(item);
 
-  const datosActualizar = props.datos;
+  const productos = props.datos;
+  const updateProductos = props.update;
+  
+  const handleEnvio = async () => {
+    const id = productos._id;
+    const datos = {
+      tecnologia: tecnologia,
+      item: actualizar
+    }
+    //peticion put axios 
+    await updateProductos(id, datos);
+  }
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const updateProductos = async (id) => {
-    await axios
-      .put(`http://127.0.0.1:5000/api/productos/${id}`, {tecnologia:tecnologia, item:actualizar})
-      .then((data) => console.log("Producto actualizado"))
-      .catch((err) => console.log(err));
-    await fetchProductos();
-  };
 
   return (
     <div>
@@ -50,7 +53,7 @@ const EditModal = (props) => {
 
           <Button 
             variant="primary" 
-            onClick={() => {updateProductos(datosActualizar._id); handleClose();}}
+            onClick={() => {handleEnvio(); handleClose();}}
             >
             Save Changes
           </Button>

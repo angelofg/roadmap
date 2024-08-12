@@ -15,6 +15,7 @@ const Mapa = (props) => {
           datos={producto} 
           fetch={props.fetch} 
           delete={props.delete}
+          update={props.update}
          />
       ))}
     </div>
