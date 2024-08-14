@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import "./Campo.css";
 
 const Campo = (props) => {
+
     const handleCambio = (e) => {
         props.actualizarValor(e.target.value);
     }

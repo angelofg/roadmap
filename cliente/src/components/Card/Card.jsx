@@ -11,7 +11,7 @@ const Card = (props) => {
 
     return <div className="card">
         <div className="encabezado">
-            <h1>{tecnologia}</h1>
+            <h1 className="titulo">{tecnologia}</h1>
             <div className="iconos">
                 <EditModal 
                     datos={props.datos}
@@ -27,7 +27,7 @@ const Card = (props) => {
             
         </div>
         <div className="info">
-              {badge.map((text) => <h4><Badge pill bg="info">{text}</Badge></h4>)}
+              {badge.map((text) => <h4><Badge bg="info">{text}</Badge></h4>)}
         </div>
         
     </div>
