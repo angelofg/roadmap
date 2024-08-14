@@ -1,3 +1,4 @@
+import "./Manager.css";
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import Formulario from "../Formulario/Formulario";
@@ -9,7 +10,6 @@ const Manager = () => {
     const [productos, setProductos] = useState([]);
     const [tecnologia, setTecnologia] = useState("");
     const [item, setItem] = useState("");
-    //const [actualizar, setActualizar] = useState(item);
 
     useEffect(() => {
         fetchProductos();
@@ -48,19 +48,27 @@ const Manager = () => {
 
     return (
     <ProductoContext.Provider value={productos}>
-        <div>
-            <Formulario 
-                actualizarTec={setTecnologia} 
-                actualizarItem={setItem}
-                add={addProductos}
-                fetch={fetchProductos}
-            />
-            <Mapa 
-                fetch={fetchProductos}
-                delete={deleteProductos}
-                update={updateProductos}
-            />
-        </div>
+        <main className="main-container">
+            <section className="agregar">
+                <Formulario 
+                    actualizarTec={setTecnologia} 
+                    actualizarItem={setItem}
+                    add={addProductos}
+                    fetch={fetchProductos}
+                />
+            </section>
+            
+            <section className="lista">
+                <div className="product-container">
+                <Mapa 
+                    fetch={fetchProductos}
+                    delete={deleteProductos}
+                    update={updateProductos}
+                />
+                </div>
+            </section>
+            
+        </main>
     </ProductoContext.Provider>
     );
 };

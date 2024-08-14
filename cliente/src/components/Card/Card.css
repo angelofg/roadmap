@@ -1,6 +1,7 @@
 .card {
-    width: 400px;
-    margin-bottom: 24px;
+    display: flex;
+    width: 70%;
+    /* margin-bottom: 24px; */
 }
 
 .card .encabezado{
@@ -19,19 +20,14 @@
 }
  
 .card .info{
+    display: flex;
     background: #e0e0e0;
     box-shadow: 7px 7px 15px rgba(0, 0, 0, 25%);
     border-radius: 0px 0px 10px 10px;
-    padding: 48px;
-    padding-bottom: 40px;
-    min-height: 100px;
+    padding: 10px;
+    /* padding-bottom: 40px; */
 }
 
 .card .info h4{
-    font-size: 18px;
-    line-height: 22px;
-    color: #212121;
-    padding: 0 24px;
-    font-weight: 400;
-    margin: 0;
+    margin: 5px;
 }
