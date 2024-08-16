@@ -15,14 +15,14 @@ const EditModal = (props) => {
   const productos = props.datos;
   const updateProductos = props.update;
   
-  const handleEnvio = async () => {
+  const handleEnvio = () => {
     const id = productos._id;
     const datos = {
       tecnologia: tecnologia,
       item: actualizar
     }
     //peticion put axios 
-    await updateProductos(id, datos);
+    updateProductos(id, datos);
   }
 
   const handleClose = () => setShow(false);

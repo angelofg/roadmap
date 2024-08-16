@@ -1,6 +1,5 @@
 import "./Manager.css";
 import { createContext, useState, useEffect } from "react";
-import axios from "axios";
 import Formulario from "../Formulario/Formulario";
 import Mapa from "../Mapa/Mapa";
 import { productServices } from "../../services/productServices";
@@ -27,18 +26,15 @@ const Manager = () => {
     const addProductos = async () => {
         await productServices.addProductos(tecnologia,item);
         await fetchProductos();
-    }
+    };
       
     const deleteProductos = async (id) => {
         await productServices.deleteProductos(id);
         await fetchProductos();
-    }
+    };
     
-    const updateProductos = async (id,data) => {
-        await axios
-          .put(`http://127.0.0.1:5000/api/productos/${id}`, data)
-          .then((data) => console.log("Producto actualizado"))
-          .catch((err) => console.log(err));
+    const updateProductos = async (id, datos) => {
+        await productServices.updateProductos(id, datos);
         await fetchProductos();
     };
 
