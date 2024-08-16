@@ -10,6 +10,7 @@ const Campo = (props) => {
     return <div className="campo">
         <label>{props.titulo}</label>
         <input 
+            id="input-campo"
             type="text"
             placeholder={props.placeholder} 
             value={props.valor}

@@ -3,6 +3,7 @@ import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import Formulario from "../Formulario/Formulario";
 import Mapa from "../Mapa/Mapa";
+import { productServices } from "../../services/productServices";
 
 export const ProductoContext = createContext();
 
@@ -15,11 +16,14 @@ const Manager = () => {
         fetchProductos();
     }, []);
 
-    const fetchProductos = async () => {
-        const response = await axios.get("http://127.0.0.1:5000/api/productos");
-        setProductos(response.data);
-    };
+    const fetchProductos = async() => {
+       const data = await productServices.fetchProductos();
+       setProductos(data);
+    //    console.log(data);
+    }; 
 
+    // console.log(productos);
+    
     const addProductos = async () => {
         await axios
           .post("http://127.0.0.1:5000/api/productos", {
@@ -28,8 +32,8 @@ const Manager = () => {
           })
           .then((data) => console.log("Datos enviados"))
           .catch((err) => console.log(err));
-      };
-
+    };
+      
     const deleteProductos = async (id) => {
     await axios
         .delete(`http://127.0.0.1:5000/api/productos/${id}`)

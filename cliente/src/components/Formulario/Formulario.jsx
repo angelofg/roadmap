@@ -3,17 +3,19 @@ import Campo from "../Campo/Campo";
 import Boton from "../Boton/Boton";
 import { useContext } from "react";
 import { ProductoContext } from "../Manager/Manager";
+import { productServices } from "../../services/productServices";
 
 const Formulario = (props) => {
   const {tecnologia, item} = useContext(ProductoContext);
 
   const addProductos = props.add;
   const fetchProductos = props.fetch;
+  
 
   const handleEnvio = async (e) => {
     e.preventDefault();
-    await addProductos();
-    await fetchProductos();
+    addProductos();
+    fetchProductos();
   };
 
   return (

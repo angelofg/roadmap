@@ -27,7 +27,7 @@ const Card = (props) => {
             
         </div>
         <div className="info">
-              {badge.map((text) => <h4><Badge bg="info">{text}</Badge></h4>)}
+              {badge.map((text, index) => <h4 key={index}><Badge bg="info">{text}</Badge></h4>)}
         </div>
         
     </div>
