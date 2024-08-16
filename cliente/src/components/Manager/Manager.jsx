@@ -23,16 +23,11 @@ const Manager = () => {
     }; 
 
     // console.log(productos);
-    
+
     const addProductos = async () => {
-        await axios
-          .post("http://127.0.0.1:5000/api/productos", {
-            tecnologia: tecnologia,
-            item: item,
-          })
-          .then((data) => console.log("Datos enviados"))
-          .catch((err) => console.log(err));
-    };
+        await productServices.addProductos(tecnologia,item);
+        fetchProductos();
+    }
       
     const deleteProductos = async (id) => {
     await axios

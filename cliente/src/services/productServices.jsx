@@ -6,8 +6,8 @@ const fetchProductos = async () => {
     .catch((err) => console.log(err));
 };
 
-const addProductos = async () => {
-    await axios
+const addProductos = async (tecnologia,item) => {
+    return await axios
         .post("http://127.0.0.1:5000/api/productos", {
         tecnologia: tecnologia,
         item: item,
