@@ -1,5 +1,5 @@
-import DeleteProduct from "../DeleteProduct/DeleteProduct";
-import EditModal from "../EditModal/EditModal";
+import DeleteProduct from "../DeleteProduct";
+import EditModal from "../EditModal";
 import "./Card.css";
 import Badge from 'react-bootstrap/Badge';
 

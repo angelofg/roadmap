@@ -1,7 +1,7 @@
 import "./Manager.css";
 import { createContext, useState, useEffect } from "react";
-import Formulario from "../Formulario/Formulario";
-import Mapa from "../Mapa/Mapa";
+import Formulario from "../Formulario";
+import Mapa from "../Mapa";
 import { productServices } from "../../services/productServices";
 
 export const ProductoContext = createContext();

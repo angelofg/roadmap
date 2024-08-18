@@ -1,6 +1,6 @@
 import "./Mapa.css";
-import Card from "../Card/Card";
-import { ProductoContext } from "../Manager/Manager";
+import Card from "../Card";
+import { ProductoContext } from "../Manager";
 import { useContext } from "react";
 
 const Mapa = (props) => {

@@ -1,9 +1,8 @@
 import "./Formulario.css";
-import Campo from "../Campo/Campo";
-import Boton from "../Boton/Boton";
+import Campo from "../Campo";
+import Boton from "../Boton";
 import { useContext } from "react";
-import { ProductoContext } from "../Manager/Manager";
-import { productServices } from "../../services/productServices";
+import { ProductoContext } from "../Manager";
 
 const Formulario = (props) => {
   const {tecnologia, item} = useContext(ProductoContext);
@@ -11,7 +10,6 @@ const Formulario = (props) => {
   const addProductos = props.add;
   const fetchProductos = props.fetch;
   
-
   const handleEnvio = async (e) => {
     e.preventDefault();
     addProductos();
