@@ -10,6 +10,20 @@ const registrarUsuario = async (username, password) => {
         .catch((err) => console.log(err));
 };
 
+const iniciarSesion = async (username, password) => {
+    try {
+        const response = await axios.post("http://127.0.0.1:5000/api/login", {
+            username,
+            password,
+        });
+        localStorage.setItem('token', response.data.token);
+        console.log('Inicio de sesion exitoso');
+    } catch (error){
+        console.log('Error en el inicio de sesion');
+    }
+}
+
 export const userServices = {
-    registrarUsuario
+    registrarUsuario,
+    iniciarSesion
 };
