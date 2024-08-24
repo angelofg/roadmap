@@ -3,16 +3,19 @@ import './Login.css';
 import Campo from '../../components/Campo';
 import Boton from '../../components/Boton';
 import { userServices } from '../../services/userServices';
+import { Navigate } from 'react-router-dom';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState([]);
+    const [logeado, setLogeado] = useState(false);
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await userServices.iniciarSesion(username, password);
-    }
+        await userServices.iniciarSesion(username, password)
+            .then((data) => setLogeado(true))
+            .catch((err) => console.log(err));
+    };
 
     return (
         <section className='formulario-sesion'>
@@ -31,9 +34,8 @@ const Login = () => {
                     required
                 />
                 <Boton>Iniciar sesion</Boton>
-                {/* {message && <p className='text-center'>{message}</p>} */}
+                {logeado && <Navigate to="/manager" replace={true} />}
             </form>
-            
         </section>
     );
 };
