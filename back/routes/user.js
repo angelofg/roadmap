@@ -8,19 +8,22 @@ require('../models/user');
 
 router.get('/', (req, res) => {
     res.send('Bienvenidos');
+    req.flash('success_msg', 'Bienvenido a la pagina');
 });
 
 router.get('/api/login', (req, res) => {
-    res.redirect('/login');
+    req.flash('success_msg', 'Bienvenido a la pagina');
+    res.redirect('http://localhost:5173/login');
 });
 
 router.post('/api/login', passport.authenticate('local', {
-    successRedirect: '/api/productos',
-    failureRedirect: '/login',
+    successRedirect: 'http://localhost:5173/manager',
+    failureRedirect: 'http://localhost:5173/login',
+    failureFlash: true
 }));
 
 router.get('/api/register', (req, res) => {
-    res.redirect('/register');
+    res.redirect('http://localhost:5173/register');
 });
 
 router.post('/api/register', async (req, res) => {

@@ -14,14 +14,14 @@ router.post('/api/productos', async (req, res) => {
     res.send(newProducto);
 });
 
-router.put('/api/productos/:id', async (req, res) => {
+router.put('/api/productos/:id',  async (req, res) => {
     const updateProducto = await Producto.findByIdAndUpdate(req.params.id, req.body, { new: true});
     res.send(updateProducto);
 });
 
 router.delete('/api/productos/:id', async (req, res) => {
     await Producto.findByIdAndDelete(req.params.id);
-    res.send({ message: 'Producto deleted'});
+    res.send({ message: 'Producto Eliminado'});
 });
 
 module.exports = router;

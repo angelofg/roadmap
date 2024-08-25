@@ -17,7 +17,7 @@ const iniciarSesion = async (username, password) => {
             username,
             password
         })
-        .then((data) => console.log("Inicio de Sesion exitoso"))
+        .then((data) => console.log("Inicio de sesion exitoso"))
         .catch((err) => console.log(err));
     // localStorage.setItem('token', response.data.token);     
 }

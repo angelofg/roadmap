@@ -9,7 +9,7 @@ passport.use(new LocalStrategy({
     const user = await User.findOne({username: username});
    
     if(!user){
-        return done(null, false,  {message: 'Not User found.' }); // Usuario autenticado
+        return done(null, false,  {message: 'Not User found.' }); 
     } else {
         const match = await user.matchPassword(password);
         if(match){
@@ -22,21 +22,12 @@ passport.use(new LocalStrategy({
 
 //Serializacion y deserializacion de usuarios
 passport.serializeUser((user, done) => {
+    console.log('serializando usuario: ', user);
     done(null, user.id);
 });
 
-passport.deserializeUser((id, done) =>{
-    User.findById(id)
-    .then(user=>{
-        done(null, user);
-    })
-    .catch(err => {
-        done(err, null);
-    });
+passport.deserializeUser(async (id, done) => {
+    const user = await User.findById(id);
+    console.log('deserializando usuario: ',user);
+    done(null, user);
 });
-
-// passport.deserializeUser(async(id, done) => {
-//    await User.find(id, (err, user) => {
-//         done(err, user);
-//     });
-// });

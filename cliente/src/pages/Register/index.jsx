@@ -3,7 +3,8 @@ import './Register.css';
 import Campo from '../../components/Campo';
 import Boton from '../../components/Boton';
 import { userServices } from '../../services/userServices';
-import { Navigate } from 'react-router-dom';
+import { Toaster, toast } from 'sonner';
+// import { Navigate } from 'react-router-dom';
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -12,9 +13,15 @@ const Register = () => {
 
     const handleEnvio = async(e) => {
         e.preventDefault();
+
+        if(username!=="" && password !== ""){
         await userServices.registrarUsuario(username, password)
             .then((data) => setRegistrado(true))
             .catch((err) => console.log(err));
+            toast.success('Registro Exitoso');
+        }else{
+            toast.error('Error!', {description: 'Complete los campos requeridos'});
+        }
     };
 
     return (
@@ -34,8 +41,10 @@ const Register = () => {
                     required
                 />
                 <Boton>Registrarte</Boton>
-                 {registrado && <Navigate to="/login" replace={true} />} 
             </form>
+
+            {/* {registrado && <Navigate to="/login" replace={true} />}  */}
+            <Toaster richColors position='top-right'/>
         </section>
     );
 };

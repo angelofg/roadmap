@@ -3,7 +3,8 @@ import './Login.css';
 import Campo from '../../components/Campo';
 import Boton from '../../components/Boton';
 import { userServices } from '../../services/userServices';
-import { Navigate } from 'react-router-dom';
+import { Toaster, toast } from 'sonner';
+// import { Navigate } from 'react-router-dom';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -12,9 +13,16 @@ const Login = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await userServices.iniciarSesion(username, password)
-            .then((data) => setLogeado(true))
-            .catch((err) => console.log(err));
+        
+        if(username!=="" && password !== ""){
+            await userServices.iniciarSesion(username, password)
+             .then((data) => setLogeado(true))
+             .catch((err) => console.log(err));
+            toast.success('Inicio Exitoso');
+        } else {
+            toast.error('Error!', {description: 'Complete los campos requeridos'});
+        }
+        
     };
 
     return (
@@ -34,9 +42,17 @@ const Login = () => {
                     required
                 />
                 <Boton>Iniciar sesion</Boton>
-                {logeado && <Navigate to="/manager" replace={true} />}
             </form>
+
+             {/* {logeado && <Navigate to="/manager" replace={true} />}  */}
+            <Toaster richColors position='top-right'/>            
         </section>
+
+        
+            
+
+        
+
     );
 };
 
