@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FiEdit } from "react-icons/fi";
+import { toast } from "sonner";
 
 
 const EditModal = (props) => {
@@ -53,7 +54,11 @@ const EditModal = (props) => {
 
           <Button 
             variant="primary" 
-            onClick={() => {handleEnvio(); handleClose();}}
+            onClick={() => {
+              handleEnvio(); 
+              handleClose();
+              toast.info('Tarjeta Actualizada.');
+            }}
             >
             Save Changes
           </Button>

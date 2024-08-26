@@ -20,7 +20,7 @@ const Login = () => {
              .catch((err) => console.log(err));
             toast.success('Inicio Exitoso');
         } else {
-            toast.error('Error!', {description: 'Complete los campos requeridos'});
+            toast.error('Error', {description: 'Complete los campos requeridos'});
         }
         
     };

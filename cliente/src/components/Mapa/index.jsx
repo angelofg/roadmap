@@ -6,8 +6,6 @@ import { useContext } from "react";
 const Mapa = (props) => {
 
   const productos = useContext(ProductoContext);
-
-  // console.log(productos);
   
   return (
     <div className="mapa">
