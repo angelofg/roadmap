@@ -44,7 +44,6 @@ const Register = () => {
             </form>
 
             {/* {registrado && <Navigate to="/login" replace={true} />}  */}
-            <Toaster richColors position='top-right'/>
         </section>
     );
 };

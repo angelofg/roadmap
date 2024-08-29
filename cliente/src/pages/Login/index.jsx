@@ -44,8 +44,7 @@ const Login = () => {
                 <Boton>Iniciar sesion</Boton>
             </form>
 
-             {/* {logeado && <Navigate to="/manager" replace={true} />}  */}
-            <Toaster richColors position='top-right'/>            
+             {/* {logeado && <Navigate to="/manager" replace={true} />}  */}         
         </section>
 
         

@@ -22,7 +22,14 @@ const iniciarSesion = async (username, password) => {
     // localStorage.setItem('token', response.data.token);     
 }
 
+const cerrarSesion = async() => {
+    await axios.get("http://127.0.0.1:5000/api/logout")
+    .then((data) => console.log(data.data))
+    .catch((err) => console.log(err));
+};
+
 export const userServices = {
     registrarUsuario,
-    iniciarSesion
+    iniciarSesion,
+    cerrarSesion
 };

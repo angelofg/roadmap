@@ -37,8 +37,6 @@ const Formulario = (props) => {
         />
         <Boton>Agregar</Boton>
       </form>
-
-      <Toaster richColors position="top-right" />
     </section>
   );
 };
