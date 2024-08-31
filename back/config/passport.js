@@ -2,10 +2,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
 
+
 //Configurar estrategia local
-passport.use(new LocalStrategy({
-    usernameField: 'username'
-}, async (username, password, done) => {
+passport.use(new LocalStrategy({usernameField: 'username'}, async(username, password, done) => {
     const user = await User.findOne({username: username});
    
     if(!user){
@@ -27,7 +26,13 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-    const user = await User.findById(id);
-    console.log('deserializando usuario: ',user);
-    done(null, user);
+    User.findById(id)
+    .then(user=>{
+        console.log('deserializando usuario: ', user);
+        done(null, user);
+    })
+    .catch(err=> {
+        console.log(err);
+        done(err, null);
+    })
 });
