@@ -1,19 +1,20 @@
-import { toast } from "sonner";
 import { userServices } from "../../services/userServices";
+import { useNavigate } from "react-router-dom";
 
 const Logout = (props) => {
+    const navigate = useNavigate();
 
-    const handleClick = async () =>{
-       
+    const handleClick = async() =>{
+
+
         await userServices.cerrarSesion();
         
-        toast.success("Sesion Cerrada");
+        navigate('/login');
+        // window.location.reload();
     }
 
     return (<>
-    <div onClick={handleClick}>{props.children}</div>
-        
-        
+    <div onClick={handleClick}>Cerrar sesion</div>   
     </>)
 };
 

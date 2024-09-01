@@ -4,6 +4,7 @@ import Campo from '../../components/Campo';
 import Boton from '../../components/Boton';
 import { userServices } from '../../services/userServices';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom'
 // import { Navigate } from 'react-router-dom';
 
 const Login = () => {
@@ -11,15 +12,20 @@ const Login = () => {
     const [password, setPassword] = useState('');
     // const [logeado, setLogeado] = useState(false);
 
+    const navigate = useNavigate();
+
     const handleSubmit = async(e) => {
         e.preventDefault();
         
         if(username!=="" && password !== ""){
             await userServices.iniciarSesion(username, password);
+            
+            navigate('/manager');
+            // window.location.reload();
         } else {
             toast.error('Error', {description: 'Complete los campos requeridos'});
         }
-        
+
     };
 
     return (

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Producto = require('../models/productos');
-// const { isAuthenticated } = require('../helpers/auth');
+// const { verifyToken } = require('../helpers/auth');
 // require('../models/productos');    
 
 router.get('/api/productos', async (req, res) => {

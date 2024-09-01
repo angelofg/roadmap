@@ -24,9 +24,14 @@ const iniciarSesion = async (username, password) => {
 }
 
 const cerrarSesion = async() => {
-    await axios.get("http://127.0.0.1:5000/api/logout")
-    .then((data) => console.log(data.data))
-    .catch((err) => console.log(err));
+    try{
+        const response = await axios.get("http://127.0.0.1:5000/api/logout");
+        
+        localStorage.clear();
+        toast.success(response.data);
+    }catch(err){
+        toast.success(err);
+    }
 };
 
 export const userServices = {

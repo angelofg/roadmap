@@ -50,13 +50,7 @@ router.post('/api/register', async (req, res) => {
 });
 
 router.get("/api/logout", function(req, res){
-    req.logout((err) => {
-        if(err){
-            return next(err);
-        }
-        res.send('Sesion cerrada');
-    });
-    
+    res.send('Sesion cerrada');
 });
 
 module.exports = router;
