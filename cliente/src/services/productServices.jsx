@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "sonner"
 
 const fetchProductos = async () => {
     return await axios.get("http://127.0.0.1:5000/api/productos")
@@ -12,14 +13,14 @@ const addProductos = async (tecnologia,item) => {
         tecnologia: tecnologia,
         item: item,
         })
-        .then((data) => console.log("Datos enviados"))
+        .then((data) => toast.success('Tarjeta Agregada!'))
         .catch((err) => console.log(err));
 };
     
 const deleteProductos = async (id) => {
 await axios
     .delete(`http://127.0.0.1:5000/api/productos/${id}`)
-    .then((data) => console.log("Producto eliminado"))
+    .then((data) => toast.warning('Tarjeta Eliminada.'))
     .catch((err) => console.log(err));
 await fetchProductos();
 };
@@ -27,7 +28,7 @@ await fetchProductos();
 const updateProductos = async (id, data) => {
     await axios
         .put(`http://127.0.0.1:5000/api/productos/${id}`, data)
-        .then((data) => console.log("Producto actualizado"))
+        .then((data) => toast.info('Tarjeta Actualizada.'))
         .catch((err) => console.log(err));
     await fetchProductos();
 };

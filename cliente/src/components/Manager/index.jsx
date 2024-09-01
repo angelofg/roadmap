@@ -3,6 +3,7 @@ import { createContext, useState, useEffect } from "react";
 import Formulario from "../Formulario";
 import Mapa from "../Mapa";
 import { productServices } from "../../services/productServices";
+import { toast } from "sonner";
 
 export const ProductoContext = createContext();
 
@@ -18,14 +19,16 @@ const Manager = () => {
     const fetchProductos = async() => {
         const data = await productServices.fetchProductos();
         setProductos(data);
-        //console.log(data);
     }; 
 
-    // console.log(productos);
-
     const addProductos = async () => {
-        await productServices.addProductos(tecnologia,item);
-        await fetchProductos();
+        if(tecnologia!=="" && item!==""){
+            await productServices.addProductos(tecnologia,item);
+            await fetchProductos();
+        }else{
+            toast.error('Error', {description: 'Complete los campos requeridos'});
+        }
+        
     };
       
     const deleteProductos = async (id) => {

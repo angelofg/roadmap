@@ -4,18 +4,22 @@ import Campo from '../../components/Campo';
 import Boton from '../../components/Boton';
 import { userServices } from '../../services/userServices';
 import { toast } from 'sonner';
-// import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // const [registrado, setRegistrado] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleEnvio = async(e) => {
         e.preventDefault();
 
         if(username!=="" && password !== ""){
             await userServices.registrarUsuario(username, password);
+            
+            navigate('/login');
+            
         }else{
             toast.error('Error!', {description: 'Complete los campos requeridos'});
         }

@@ -25,10 +25,10 @@ function App() {
             } 
           />
 
-          <Route path="/" element={<Inicio />} /> 
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="*" element={<Page404 />} />
+          <Route path="/" element={ <Inicio />} /> 
+          <Route path="/login" element={ <Login />} />
+          <Route path="/register" element={ <Register />} />
+          <Route path="*" element={ <Page404 />} />
           
         </Routes>
       </Router>

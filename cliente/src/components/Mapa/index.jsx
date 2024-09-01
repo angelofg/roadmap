@@ -18,7 +18,7 @@ const Mapa = (props) => {
           update={props.update}
          />
       ))}
-    </div>
+    </div> 
   );
 };
 

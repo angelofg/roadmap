@@ -5,12 +5,10 @@ import Boton from '../../components/Boton';
 import { userServices } from '../../services/userServices';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom'
-// import { Navigate } from 'react-router-dom';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // const [logeado, setLogeado] = useState(false);
 
     const navigate = useNavigate();
 
@@ -21,7 +19,8 @@ const Login = () => {
             await userServices.iniciarSesion(username, password);
             
             navigate('/manager');
-            // window.location.reload();
+            window.location.reload();
+            
         } else {
             toast.error('Error', {description: 'Complete los campos requeridos'});
         }

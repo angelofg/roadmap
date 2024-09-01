@@ -6,11 +6,10 @@ const Logout = (props) => {
 
     const handleClick = async() =>{
 
-
         await userServices.cerrarSesion();
         
         navigate('/login');
-        // window.location.reload();
+        window.location.reload();
     }
 
     return (<>

@@ -3,7 +3,6 @@ import Campo from "../Campo";
 import Boton from "../Boton";
 import { useContext } from "react";
 import { ProductoContext } from "../Manager";
-import { Toaster, toast } from "sonner";
 
 const Formulario = (props) => {
   const {tecnologia, item} = useContext(ProductoContext);
@@ -13,10 +12,8 @@ const Formulario = (props) => {
   
   const handleEnvio = async (e) => {
     e.preventDefault();
-    
       addProductos();
-      fetchProductos();
-      toast.success('Tarjeta Agregada!');
+      fetchProductos();    
   };
 
   return (

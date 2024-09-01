@@ -14,6 +14,8 @@ const Campo = (props) => {
             placeholder={props.placeholder} 
             value={props.valor}
             onChange={handleCambio}
+            minLength={2}
+            maxLength={60}
         />
     </div>
 }

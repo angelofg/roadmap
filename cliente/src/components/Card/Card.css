@@ -1,6 +1,6 @@
 .card {
     display: flex;
-    width: 50%;
+    width: 100%;
     height: auto;
 }
 
@@ -38,3 +38,10 @@
 .card .info h4{
     margin: 5px;
 }
+
+@media (max-width:1100px) {
+    .card {
+     width: 50%;
+     margin-left: 0;
+    }
+ }
