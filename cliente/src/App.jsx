@@ -8,30 +8,34 @@ import RouterApp from "./routes/RouterApp";
 import Inicio from "./pages/Inicio";
 import Head from "./components/Head";
 import Page404 from "./pages/Page404";
+import Footer from "./components/Footer/Footer";
+import Container from "react-bootstrap/esm/Container";
 
 function App() {
-
   return (
     <div>
-      <Router>
-      <Head />
-        <Routes>
-          
-          <Route path="/*" 
-            element={ 
-              <ProtectedRoutes>
-                <RouterApp />
-              </ProtectedRoutes> 
-            } 
-          />
+      
+     
+        <Router>
+        <Head />
+          <Routes>
+            <Route
+              path="/*"
+              element={
+                <ProtectedRoutes>
+                  <RouterApp />
+                </ProtectedRoutes>
+              }
+            />
 
-          <Route path="/" element={ <Inicio />} /> 
-          <Route path="/login" element={ <Login />} />
-          <Route path="/register" element={ <Register />} />
-          <Route path="*" element={ <Page404 />} />
-          
-        </Routes>
-      </Router>
+            <Route path="/" element={<Inicio />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </Router>
+      
+      <Footer />
     </div>
   );
 }

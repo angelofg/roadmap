@@ -1,8 +1,11 @@
-import './Inicio.css';
+import "./Inicio.css";
 
 const Inicio = () => {
-    return <h1>Inicio</h1>
-         
-}
+  return (
+    <div className="container">
+      <h1>Inicio</h1>
+    </div>
+  );
+};
 
 export default Inicio;

@@ -11,7 +11,7 @@ const Head = () => {
   const token = localStorage.getItem('token');
  
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="nav">
           <Container>
             <Navbar.Brand as={Link} to="/">RoadMap</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
