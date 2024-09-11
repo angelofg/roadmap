@@ -11,7 +11,7 @@
     border-radius: 20px;
     padding: 50px 100px;
     width: 800px;
-    height: 500px;
+    height: 650px;
 }
 
 .formulario-registro h2{
@@ -19,4 +19,29 @@
     font-weight: 400;
     color: #212121;
     text-align: center;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.input-registro{
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+    border: none;
+    padding: 20px 10px;
+    outline-color: #6278f7;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+span{
+    display: block;
+    color: tomato;
+    font-size: 15px;
+    margin-bottom: 10px;
 }

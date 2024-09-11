@@ -33,11 +33,11 @@ router.get('/api/register', (req, res) => {
 });
 
 router.post('/api/register', async (req, res) => {
-    const { username, password } = req.body;
+    const { user } = req.body;
     try{
         const userData = {
-            username: username,
-            password: password
+            username: user.username,
+            password: user.password
         }
         const newUser = new User(userData);
         newUser.password = await newUser.encryptPassword(userData.password)

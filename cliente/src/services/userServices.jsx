@@ -1,9 +1,9 @@
 import axios from "axios";
 import { toast } from 'sonner';
 
-const registrarUsuario = async (username, password) => {
+const registrarUsuario = async (user) => {
     try{
-        const response = await axios.post("http://127.0.0.1:5000/api/register",{ username, password });
+        const response = await axios.post("http://127.0.0.1:5000/api/register",{ user });
         toast.success(response.data);
     }catch(err){
         toast.error(err.response.data);
