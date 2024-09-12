@@ -12,18 +12,21 @@ router.get('/api/login', (req, res) => {
 });
 
 router.post('/api/login', async (req, res) => {
-    const { username, password } = req.body;
+    const { user } = req.body;
 
-    const user = await User.findOne({username});
-    if(!user){
+    const username = user.username;
+    const password = user.password;
+
+    const usuario = await User.findOne({username});
+    if(!usuario){
         return res.status(400).send('Usuario no encontrado');
     }
-    const match = await user.matchPassword(password);
+    const match = await usuario.matchPassword(password);
     if(!match){
         return res.status(400).send('Contraseña incorrecta');
     }
 
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET || 'secret', { expiresIn: '1h' });
+    const token = jwt.sign({ userId: username._id }, process.env.JWT_SECRET || 'secret', { expiresIn: '1h' });
     res.json({ token });
 
 });

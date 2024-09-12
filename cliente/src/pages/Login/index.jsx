@@ -1,52 +1,74 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import './Login.css';
-import Campo from '../../components/Campo';
 import Boton from '../../components/Boton';
 import { userServices } from '../../services/userServices';
-import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+
+    const {register, handleSubmit, formState: {errors} } = useForm();
 
     const navigate = useNavigate();
 
-    const handleSubmit = async(e) => {
-        e.preventDefault();
+    const handleEnvio = handleSubmit( async (data) => {
+        const user = data;
+        await userServices.iniciarSesion(user);
+        navigate('/manager');
         
-        if(username!=="" && password !== ""){
-            await userServices.iniciarSesion(username, password);
-            
-            navigate('/manager');
-            window.location.reload();
-            
-        } else {
-            toast.error('Error', {description: 'Complete los campos requeridos'});
-        }
-
-    };
+        setTimeout(()=>
+            window.location.reload()
+        ,10);
+        
+    });
 
     return (
         <section className='formulario-sesion'>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleEnvio}>
                 <h2>Iniciar Sesion</h2>
-                <Campo 
-                    placeholder="Nombre de usuario"
-                    value={username}
-                    actualizarValor={setUsername}
-                    required
+                <label htmlFor="username">Usuario</label>
+                <input 
+                    className='input-sesion'
+                    type="text" 
+                    placeholder='Digite el nombre de usuario' 
+                    {...register('username', {
+                        required: {
+                            value: true,
+                            message: 'Usuario es requerido',
+                        },
+                        minLength: {
+                            value: 3,
+                            message: 'Usuario debe tener al menos 3 caracteres',
+                        },
+                        maxLength: {
+                            value: 20,
+                            message: "Usuario debe tener maximo 20 caracteres",
+                        },
+                    })}
                 />
-                <Campo 
-                    placeholder="Contraseña"
-                    value={password}
-                    actualizarValor={setPassword}
-                    required
+
+                { errors.username && <span>{ errors.username.message }</span> }
+
+                <label htmlFor="password">Password</label>
+                <input 
+                    className='input-sesion'
+                    type="password" 
+                    placeholder='Digite su password' 
+                    {...register('password', {
+                        required: {
+                            value: true,
+                            message: 'Password es requerido',
+                        },
+                        minLength: {
+                            value: 6,
+                            message: 'Password debe tener al menos 6 caracteres',
+                        },
+                    })}
                 />
+
+                { errors.password && <span>{ errors.password.message }</span> }
+
                 <Boton>Iniciar sesion</Boton>
             </form>
-
-             {/* {logeado && <Navigate to="/manager" replace={true} />}  */}         
         </section>
     );
 };

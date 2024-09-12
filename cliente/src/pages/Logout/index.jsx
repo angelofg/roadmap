@@ -9,7 +9,9 @@ const Logout = (props) => {
         await userServices.cerrarSesion();
         
         navigate('/login');
-        window.location.reload();
+        setTimeout(()=>
+            window.location.reload()
+        ,10);
     }
 
     return (<>

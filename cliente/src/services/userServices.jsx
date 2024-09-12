@@ -11,12 +11,12 @@ const registrarUsuario = async (user) => {
         
 };
 
-const iniciarSesion = async (username, password) => {
+const iniciarSesion = async (user) => {
     try{
-        const response = await axios.post("http://127.0.0.1:5000/api/login", { username, password });
+        const response = await axios.post("http://127.0.0.1:5000/api/login", { user });
         
         localStorage.setItem('token', response.data.token);
-        toast.success(username, {description: ' ha iniciado sesion'});
+        toast.success(user.username, {description: ' ha iniciado sesion'});
     } catch(err){
         toast.error(err.response.data);
     } 
