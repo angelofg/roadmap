@@ -9,7 +9,7 @@ const Card = (props) => {
     const texto = item;
     const badge = texto.split(' ');
 
-    return <div className="card">
+    return (<div className="card">
         <div className="encabezado">
             <h1 className="titulo">{tecnologia}</h1>
             <div className="iconos">
@@ -21,16 +21,15 @@ const Card = (props) => {
                 <DeleteProduct 
                     datos={props.datos}
                     fetch={props.fetch} 
-                    delete={props.delete}
                 />
             </div>
             
         </div>
         <div className="info">
-              {badge.map((text, index) => <h4 key={index}><Badge bg="info">{text}</Badge></h4>)}
+              {badge.map((text, index) => <h4 key={index}><Badge bg="info m-1">{text}</Badge></h4>)}
         </div>
         
-    </div>
+    </div>)
 }
 
 export default Card;

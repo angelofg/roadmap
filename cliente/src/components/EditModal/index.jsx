@@ -55,7 +55,6 @@ const EditModal = (props) => {
             onClick={() => {
               handleEnvio(); 
               handleClose();
-              
             }}
             >
             Save Changes

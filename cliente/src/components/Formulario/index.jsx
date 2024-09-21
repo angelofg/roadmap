@@ -1,37 +1,69 @@
 import "./Formulario.css";
-import Campo from "../Campo";
+import { useForm } from 'react-hook-form';
+import { productServices } from "../../services/productServices";
 import Boton from "../Boton";
-import { useContext } from "react";
-import { ProductoContext } from "../Manager";
 
 const Formulario = (props) => {
-  const {tecnologia, item} = useContext(ProductoContext);
-
-  const addProductos = props.add;
-  const fetchProductos = props.fetch;
   
-  const handleEnvio = async (e) => {
-    e.preventDefault();
-      addProductos();
-      fetchProductos();    
-  };
+  const { register, handleSubmit, formState: {errors} } = useForm();
+
+  const fetchProductos = props.fetch;
+
+  const handleEnvio = handleSubmit( async(data) => {
+    
+    await productServices.addProductos(data.tecnologia,data.item);
+    fetchProductos();
+    
+  });
 
   return (
     <section className="formulario">
       <form onSubmit={handleEnvio}>
         <h2>Formulario</h2>
-        <Campo
-          titulo="Tecnologia"
-          valor={tecnologia}
-          placeholder="Titulo de la tecnologia"
-          actualizarValor={props.actualizarTec}
+        <label htmlFor="tecnologia">Tecnologia</label>
+        <input 
+          className='input-tecnologia'
+          type="text" 
+          {...register('tecnologia', {
+            required: {
+              value: true,
+              message: 'Campo tecnologia es requerido',
+            },
+            minLength: {
+              value: 3,
+              message: 'Campo tecnologia debe tener al menos 3 caracteres',
+            },
+            maxLength: {
+              value: 20,
+              message: "Campo tecnologia debe tener maximo 20 caracteres",
+            },
+          })}
         />
-        <Campo
-          titulo="Item"
-          valor={item}
-          placeholder="Digite el item"
-          actualizarValor={props.actualizarItem}
+
+        { errors.tecnologia && <span>{errors.tecnologia.message }</span>}
+
+        <label htmlFor="item">Item</label>
+        <input
+          className="input-tecnologia" 
+          type="text" 
+          {...register('item', {
+            required: {
+              value: true,
+              message: 'Campo item es requerido',
+            },
+            minLength: {
+              value: 3,
+              message: 'Campo item debe tener al menos 3 caracteres',
+            },
+            maxLength: {
+              value: 20,
+              message: "Campo item debe tener maximo 20 caracteres",
+            },
+          })}
         />
+
+        { errors.item && <span>{errors.item.message }</span>}
+
         <Boton>Agregar</Boton>
       </form>
     </section>

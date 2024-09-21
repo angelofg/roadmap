@@ -1,9 +1,10 @@
 .boton{
     font-size: 20px;
+    margin: 20px 0;
     background-color: #6278f7;
     border-radius: 10px;
     font-weight: 700;
-    padding: 24px 32px;
+    padding: 10px 20px;
     border: none;
     color: #FFFFFF;
     cursor: pointer;

@@ -22,7 +22,7 @@ await axios
     .delete(`http://127.0.0.1:5000/api/productos/${id}`)
     .then((data) => toast.warning('Tarjeta Eliminada.'))
     .catch((err) => console.log(err));
-await fetchProductos();
+
 };
 
 const updateProductos = async (id, data) => {
