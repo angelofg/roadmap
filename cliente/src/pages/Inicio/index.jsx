@@ -6,7 +6,7 @@ import { productServices } from "../../services/productServices";
 
 const Inicio = () => {
   const [productos, setProductos] = useState([]);
-  const [option, setOption] = useState([]);
+  const [option, setOption] = useState("");
 
   useEffect(() => {
     fetchProductos();
@@ -27,19 +27,22 @@ const Inicio = () => {
   //filtro para eliminar duplicidad
   const filtroTecnologia = tecnologias.filter((tecnologia, indice) => tecnologias.indexOf(tecnologia) === indice);
   //filtro para buscar tecnologias segun la opcion seleccionada
-  const filtro = productos.filter((producto) => producto.tecnologia === option);
+  const filtro = productos.filter((producto) =>  producto.tecnologia === option);
 
   return (
-    <>
-      <ListOptions 
-        valor={option}
-        product={filtroTecnologia}
-        actualizarValor={setOption}
-        actualizarProducto={setProductos}
-      />
-
-      <div className="lista">
-        {filtro.map((producto, index) => (
+    <section className="vista">
+      <div className="lista_opciones">
+        <ListOptions 
+          valor={option}
+          product={filtroTecnologia}
+          actualizarValor={setOption}
+          actualizarProducto={setProductos}
+        />
+      </div>
+      
+      { option === "" ?
+        <div className="card_inicio">
+        {productos.map((producto, index) => (
           <Card 
             key={index}
             datos={producto}
@@ -48,8 +51,21 @@ const Inicio = () => {
           />
         ))}
       </div>
+      :
+      <div className="card_inicio">
+      {filtro.map((producto, index) => (
+        <Card 
+          key={index}
+          datos={producto}
+          fetch={fetchProductos}
+          update={updateProductos}
+        />
+      ))}
+      </div>
+      }
+      
 
-    </>
+    </section>
 
   );
 };

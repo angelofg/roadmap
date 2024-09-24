@@ -11,19 +11,19 @@ const Head = () => {
   const token = localStorage.getItem('token');
  
     return (
-        <Navbar expand="lg" className="nav">
+        <Navbar expand="sm" className="nav">
           <Container>
             <Navbar.Brand as={Link} to="/">RoadMap</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
 
               { !token ?
-                <Nav className="justify-content-end flex-grow-1 p-3">
+                <Nav className="justify-content-end flex-grow-1 p-2">
                   <Nav.Link as={Link} to="/login">Iniciar sesion</Nav.Link>
                   <Nav.Link as={Link} to="/register">Crear cuenta nueva</Nav.Link>
                 </Nav>
                 :
-                <Nav className="justify-content-end flex-grow-1 p-3">
+                <Nav className="justify-content-end flex-grow-1 p-2">
                 <Nav.Link as={Link} to="/manager">Manager productos</Nav.Link>
                   <Nav.Link as={Link} to="/login"><Logout /></Nav.Link>
                 </Nav>

@@ -1,0 +1,13 @@
+.vista{
+    display: block;
+    margin: 20px;
+}
+
+.card_inicio{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    width: 100%;
+}
+

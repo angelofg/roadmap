@@ -1,3 +1,4 @@
+import './ListOptions.css';
 
 const ListOptions = (props) => {
 
@@ -10,6 +11,7 @@ const ListOptions = (props) => {
     return (
         <div className="lista-opciones">
             <select value={props.value}  onChange={handleOption}>
+                <option value="" defaultValue="">Seleccionar tecnologia</option>
                 {productos.map(producto => <option key={producto} value={producto.tecnologia}>{producto}</option>)} 
             </select>
         </div>
