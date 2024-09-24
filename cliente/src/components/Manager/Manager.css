@@ -6,8 +6,9 @@
 
 .lista{
     display: flex;
-    flex-direction: column;
-    height: 780px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
     width: 100%;
 }
 

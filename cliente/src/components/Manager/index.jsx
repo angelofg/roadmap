@@ -1,7 +1,6 @@
 import "./Manager.css";
 import { createContext, useState, useEffect } from "react";
 import Formulario from "../Formulario";
-import Mapa from "../Mapa";
 import { productServices } from "../../services/productServices";
 
 export const ProductoContext = createContext();
@@ -17,11 +16,6 @@ const Manager = () => {
         const data = await productServices.fetchProductos();
         setProductos(data);
     }; 
-    
-    const updateProductos = async (id, datos) => {
-        await productServices.updateProductos(id, datos);
-        await fetchProductos();
-    };
 
     return (
     <ProductoContext.Provider value={productos}>
@@ -31,16 +25,6 @@ const Manager = () => {
                     fetch={fetchProductos}
                 />
             </section>
-            
-            <section className="lista">
-                <div className="product-container">
-                <Mapa 
-                    fetch={fetchProductos}
-                    update={updateProductos}
-                />
-                </div>
-            </section>
-            
         </main>
     </ProductoContext.Provider>
     );

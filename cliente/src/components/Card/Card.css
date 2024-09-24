@@ -1,8 +1,9 @@
 .card {
     display: flex;
-    width: auto;
+    width: 25%;
     height: auto;
     border: none;
+    margin: 20px;
 }
 
 .card .encabezado{
