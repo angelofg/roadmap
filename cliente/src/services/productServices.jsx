@@ -7,11 +7,13 @@ const fetchProductos = async () => {
     .catch((err) => console.log(err));
 };
 
-const addProductos = async (tecnologia,item) => {
+const addProductos = async (tecnologia,item,descripcion,ejemplo) => {
     return await axios
         .post("http://127.0.0.1:5000/api/productos", {
         tecnologia: tecnologia,
         item: item,
+        descripcion: descripcion,
+        ejemplo: ejemplo
         })
         .then((data) => toast.success('Tarjeta Agregada!'))
         .catch((err) => console.log(err));

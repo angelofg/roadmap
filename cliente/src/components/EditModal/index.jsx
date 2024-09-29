@@ -6,10 +6,12 @@ import { FiEdit } from "react-icons/fi";
 
 const EditModal = (props) => {
   
-  const { tecnologia, item } = props.datos;
+  const { tecnologia, item, descripcion, ejemplo } = props.datos;
 
   const [show, setShow] = useState(false);
-  const [actualizar, setActualizar] = useState(item);
+  const [updateItem, setUpdateItem] = useState(item);
+  const [updateDescripcion, setUpdateDescripcion] = useState(descripcion);
+  const [updateEjemplo, setUpdateEjemplo] = useState(ejemplo);
 
   const productos = props.datos;
   const updateProductos = props.update;
@@ -18,7 +20,9 @@ const EditModal = (props) => {
     const id = productos._id;
     const datos = {
       tecnologia: tecnologia,
-      item: actualizar
+      item: updateItem,
+      descripcion: updateDescripcion,
+      ejemplo: updateEjemplo
     }
     //peticion put axios 
     updateProductos(id, datos);
@@ -37,11 +41,28 @@ const EditModal = (props) => {
         </Modal.Header>
 
         <Modal.Body>
+          <label htmlFor="Item">Item</label>
           <input 
             className="inputActualizar"
             type="text"
-            value={actualizar}
-            onChange={e => setActualizar(e.target.value)}
+            value={updateItem}
+            onChange={e => setUpdateItem(e.target.value)}
+          />
+
+          <label htmlFor="Descripcion">Descripcion</label>
+          <textarea
+            className="inputActualizar"
+            type="text"
+            value={updateDescripcion}
+            onChange={e => setUpdateDescripcion(e.target.value)}
+          />
+
+          <label htmlFor="Ejemplo">Ejemplo</label>
+          <textarea 
+            className="inputActualizar"
+            type="text"
+            value={updateEjemplo}
+            onChange={e => setUpdateEjemplo(e.target.value)}
           />
         </Modal.Body>
 

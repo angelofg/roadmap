@@ -1,13 +1,9 @@
 import DeleteProduct from "../DeleteProduct";
 import EditModal from "../EditModal";
 import "./Card.css";
-import Badge from 'react-bootstrap/Badge';
 
 const Card = (props) => {
-    const {tecnologia, item} = props.datos;
-
-    const texto = item;
-    const badge = texto.split(' ');
+    const {tecnologia, item, descripcion, ejemplo} = props.datos;
 
     return (<div className="card">
         <div className="encabezado">
@@ -26,7 +22,11 @@ const Card = (props) => {
             
         </div>
         <div className="info">
-              {badge.map((text, index) => <h4 key={index}><Badge bg="info m-1">{text}</Badge></h4>)}
+              <div className="detalles">
+                <h4>{item}</h4> 
+                <p>{ "//" + descripcion}</p>
+              </div>
+              <p className="ejemplo">{ejemplo}</p>
         </div>
         
     </div>)

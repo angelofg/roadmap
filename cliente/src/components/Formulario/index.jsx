@@ -11,7 +11,7 @@ const Formulario = (props) => {
 
   const handleEnvio = handleSubmit( async(data) => {
     
-    await productServices.addProductos(data.tecnologia,data.item);
+    await productServices.addProductos(data.tecnologia,data.item,data.descripcion,data.ejemplo);
     fetchProductos();
     
   });
@@ -63,6 +63,53 @@ const Formulario = (props) => {
         />
 
         { errors.item && <span>{errors.item.message }</span>}
+
+        <label htmlFor="descripcion">Descripcion</label>
+        <textarea
+          className="input-tecnologia" 
+          type="text" 
+          rows={5}
+          {...register('descripcion', {
+            required: {
+              value: true,
+              message: 'Campo descripcion es requerido',
+            },
+            minLength: {
+              value: 3,
+              message: 'Campo descripcion debe tener al menos 3 caracteres',
+            },
+            maxLength: {
+              value: 350,
+              message: "Campo descripcion debe tener maximo 350 caracteres",
+            },
+          })}
+        />
+
+        { errors.descripcion && <span>{errors.descripcion.message }</span>}
+
+        <label htmlFor="ejemplo">Ejemplo</label>
+        <textarea
+          className="input-tecnologia" 
+          type="text" 
+          rows={5}
+          {...register('ejemplo', {
+            required: {
+              value: true,
+              message: 'Campo ejemplo es requerido',
+            },
+            minLength: {
+              value: 3,
+              message: 'Campo ejemplo debe tener al menos 3 caracteres',
+            },
+            maxLength: {
+              value: 700,
+              message: "Campo ejemplo debe tener maximo 700 caracteres",
+            },
+          })}
+        />
+
+        { errors.ejemplo && <span>{errors.ejemplo.message }</span>}
+
 
         <Boton>Agregar</Boton>
       </form>
